@@ -59,7 +59,7 @@ func TestServeHTTP(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.desc, func(t *testing.T) {
 			config := &Config{
-				Transformers: test.transformers,
+				Transforms: test.transformers,
 			}
 
 			next := func(rw http.ResponseWriter, req *http.Request) {

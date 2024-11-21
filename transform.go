@@ -19,7 +19,7 @@ func CreateConfig() *Config {
 
 // Config holds the plugin configuration.
 type Config struct {
-	Transformers []Transform `json:"rewrites,omitempty"`
+	Transforms []Transform `json:"transforms,omitempty"`
 }
 
 // Rewrite holds one rewrite body configuration.
@@ -41,9 +41,9 @@ type transformer struct {
 
 // New creates and returns a new rewrite body plugin instance.
 func New(_ context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
-	transformers := make([]transformer, 0, len(config.Transformers))
+	transformers := make([]transformer, 0, len(config.Transforms))
 
-	for _, t := range config.Transformers {
+	for _, t := range config.Transforms {
 		transformers = append(transformers, transformer{
 			header: t.Header,
 			fn:     NewTransformer(t.Value),
