@@ -1,0 +1,11 @@
+displayName: Header Transform
+summary: Rewrites the HTTP response headers by replacing a search regex by a replacement string.
+type: middleware
+import: github.com/horoshev/traefik-plugin-header-transform
+compatibility: TODO
+testData:
+  transforms:
+    - header: X-Auth
+      value: "@Cookie:Authorization"
+    - header: X-Forwarded-Host
+      value: "@Header:Host"
